@@ -43,8 +43,6 @@ public class DotProductService implements IDotProductService {
     @Override
     public long dotProduct(List<long[]> inputList) {
 
-        long cont = 0;
-
         // validate length of input
         if (inputList.size() < 2) {
             throw new BadRequestException("invalid length data");
@@ -67,14 +65,6 @@ public class DotProductService implements IDotProductService {
             });
             dotProductResult.set(dotProductResult.get() + tempValue.get());
         });
-
-        for (int i = 0; i < size; i++) {
-            long tmp = 1;
-            for (long[] longs : inputList) {
-                tmp = tmp * longs[i];
-            }
-            cont = cont + tmp;
-        }
 
         return dotProductResult.get();
 
