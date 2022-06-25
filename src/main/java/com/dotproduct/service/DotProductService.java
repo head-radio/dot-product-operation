@@ -4,6 +4,8 @@ import com.dotproduct.IDotProductService;
 import com.dotproduct.exception.BadRequestException;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.stream.IntStream;
+
 
 @org.springframework.stereotype.Service
 @Log4j2
@@ -27,13 +29,7 @@ public class DotProductService implements IDotProductService {
             throw new BadRequestException("invalid length data");
         }
 
-        long result = 0;
-
-        for (int i = 0; i < a.length; i++) {
-            result = result + a[i] * b[i];
-        }
-
-        return result;
+        return IntStream.range(0, a.length).mapToLong(i -> a[i] * b[i]).sum();
 
     }
 
