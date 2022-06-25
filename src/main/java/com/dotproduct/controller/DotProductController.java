@@ -22,4 +22,9 @@ public class DotProductController {
         return ResponseEntity.ok(iDotProductService.dotProduct(dotProductRequest.getArrayA(), dotProductRequest.getArrayB()));
     }
 
+    @PostMapping(DOT_PRODUCT_LIST_PATH)
+    public ResponseEntity<Long> dtoProduct(@RequestBody DotProductListRequest dotProductListRequest) {
+        return ResponseEntity.ok(iDotProductService.dotProduct(dotProductListRequest.getList()));
+    }
+
 }

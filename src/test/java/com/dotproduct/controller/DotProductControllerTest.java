@@ -56,4 +56,24 @@ public class DotProductControllerTest {
 
     }
 
+    @Test
+    public void dotProductListTest() throws Exception {
+
+        DotProductListRequest dotProductListRequest = new DotProductListRequest();
+        List<long[]> list = new ArrayList<>();
+        list.add(new long[]{1, 2, 3});
+        list.add(new long[]{1, 2, 3});
+        dotProductListRequest.setList(list);
+
+        Gson gson = new Gson();
+        log.info(gson.toJson(dotProductListRequest));
+
+        when(iDotProductService.dotProduct(new long[]{1, 2, 3}, new long[]{1, 2, 3})).thenReturn(14L);
+        mockMvc.perform(post(BASE_PATH + DOT_PRODUCT_LIST_PATH)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(gson.toJson(dotProductListRequest)))
+                .andExpect(status().isOk());
+
+    }
+
 }
