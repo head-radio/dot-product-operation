@@ -36,7 +36,7 @@ Quick start
 
 ### cURL for testing
 - curl -v --location --request POST 'http://localhost:8080/dot-product' --header 'Content-Type: application/json' --data-raw '{"arrayA":[1,2,3],"arrayB":[1,2,3]}'
-
+- curl --location --request POST 'http://localhost:8080/dot-product/list' --header 'Content-Type: application/json' --data-raw '{"list":[[1,2,3],[1,2,3]]}'
 
 ## Licence
 AP License
