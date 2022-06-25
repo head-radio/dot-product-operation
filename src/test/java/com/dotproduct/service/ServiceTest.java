@@ -33,4 +33,34 @@ public class ServiceTest {
         service.dotProduct(null, new long[]{1, 2});
     }
 
+    @Test
+    public void dotProductListTest() {
+        List<long[]> list = new ArrayList<>();
+        list.add(new long[]{1, 2, 3});
+        list.add(new long[]{1, 2, 3});
+        long result = service.dotProduct(list);
+        assertEquals(14, result);
+    }
+
+    @Test(expected = BadRequestException.class)
+    public void dotProductListTest_exception1() {
+        List<long[]> list = new ArrayList<>();
+        long result = service.dotProduct(list);
+    }
+
+    @Test(expected = BadRequestException.class)
+    public void dotProductListTest_exception2() {
+        List<long[]> list = new ArrayList<>();
+        list.add(new long[]{1, 2, 3});
+        long result = service.dotProduct(list);
+    }
+
+    @Test(expected = BadRequestException.class)
+    public void dotProductListTest_exception3() {
+        List<long[]> list = new ArrayList<>();
+        list.add(new long[]{1, 2, 3});
+        list.add(new long[]{1, 2, 3, 4});
+        long result = service.dotProduct(list);
+    }
+
 }
